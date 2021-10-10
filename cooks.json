@@ -1,0 +1,32 @@
+[
+  {
+    "rank": 3,
+    "proficiency": 2,
+    "name": "Gordon Ramsay",
+    "catch-phrase": "Hey, panini head, are you listening to me?"
+  },
+  {
+    "rank": 1,
+    "proficiency": 1,
+    "name": "Grant Achatz",
+    "catch-phrase": "Hey, panini head, are you listening to me?"
+  },
+  {
+    "rank": 2,
+    "proficiency": 2,
+    "name": "Nicolas Appert",
+    "catch-phrase": "Hey, panini head, are you listening to me?"
+  },
+  {
+    "rank": 2,
+    "proficiency": 1,
+    "name": "James Beard",
+    "catch-phrase": "Hey, panini head, are you listening to me?"
+  },
+  {
+    "rank": 2,
+    "proficiency": 3,
+    "name": "Paul Bocuse",
+    "catch-phrase": "Hey, panini head, are you listening to me?"
+  }
+]
