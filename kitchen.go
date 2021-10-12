@@ -9,6 +9,8 @@ var OrderChan = make(chan Order, 100)
 
 var Foods = make([]Food, 10)
 var FoodChan = make(chan Food, 1000)
+var TmpFoodChan = make(chan Food, 1000)
+var tmpNotEmpty bool
 
 var Cooks = make([]Cook, 100)
 var RankChans [3]chan Cook
@@ -22,7 +24,7 @@ func main() {
 
 	// Start the goroutines
 	go pickOrders()
-	go pickCooks()
+	go distributeFood()
 
 	// Start the server
 	a := App{}
@@ -40,18 +42,21 @@ func pickOrders() {
 	}
 }
 
-func pickCooks() {
+func distributeFood() {
 	for food := range FoodChan {
-	L:
-		for {
-			for i := 0; i < 3; i++ {
-				if food.Complexity <= i+1 {
-					select {
-					case cook := <-RankChans[i]:
-						go cooking(cook, i, food.ID)
-						break L
-					default:
-					}
+		go pickCook(food)
+	}
+}
+
+func pickCook(food Food) {
+	for {
+		for i := 0; i < 3; i++ {
+			if food.Complexity <= i+1 {
+				select {
+				case cook := <-RankChans[i]:
+					go cooking(cook, i, food.ID)
+					return
+				default:
 				}
 			}
 		}
@@ -59,9 +64,8 @@ func pickCooks() {
 }
 
 func cooking(cook Cook, rank int, id int) {
-	fmt.Printf("Start cooking %v\n", cook.Name)
+	fmt.Printf("Start cooking %v %v\n", cook.Name, id)
 	time.Sleep(time.Second * time.Duration((rank+1)*3))
 	fmt.Printf("%v cooked %v\n", cook.Name, id)
 	RankChans[rank] <- cook
-
 }
