@@ -1,2 +1,4 @@
 
 kitchen
+logs/cooks.log
+logs/orders.log
