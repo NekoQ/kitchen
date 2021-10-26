@@ -127,7 +127,7 @@ func waitForOrder(order Order) {
 }
 
 func sendOrder(order Order) {
-	url := "http://127.0.0.1:81/distribution"
+	url := "http://172.17.0.3:81/distribution"
 	jsonValue, _ := json.Marshal(order)
 	http.Post(url, "application/json", bytes.NewBuffer(jsonValue))
 	timeNow := time.Now().Format(time.Stamp)
