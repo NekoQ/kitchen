@@ -13,6 +13,8 @@ type Food struct {
 	PreparationTime  int    `json:"preparation-time"`
 	Complexity       int    `json:"complexity"`
 	CookingApparatus string `json:"cooking-apparatus"`
+	orderID          int
+	cookID           int
 }
 
 func UnmarshalFood() {

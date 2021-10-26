@@ -8,6 +8,7 @@ import (
 )
 
 type Cook struct {
+	ID          int    `json:"id"`
 	Rank        int    `json:"rank"`
 	Proficiency int    `json:"proficiency"`
 	Name        string `json:"name"`

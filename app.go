@@ -35,6 +35,6 @@ func addToOrderList(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Printf("Order: %+v\n", order)
 	go func() {
-		OrderChan <- order
+		ReceivedOrdersChan <- order
 	}()
 }
