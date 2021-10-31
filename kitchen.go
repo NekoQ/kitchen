@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	TIME_UNIT = 250
+	TIME_UNIT = 100
 
 	ReceivedOrdersChan = make(chan Order, 100)
 	OrdersChan         = make(map[int]chan Food)
